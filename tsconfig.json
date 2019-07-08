@@ -15,7 +15,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@bmo/docu-ui": ["apps/docu-ui/src/index.ts"],
+      "@bmo/nn2": ["apps/nn2/src/index.ts"],
+      "@bmo/ui": ["libs/ui/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

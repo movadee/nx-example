@@ -7,5 +7,27 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "ui": {
+      "tags": []
+    },
+    "portal-e2e": {
+      "tags": []
+    },
+    "portal": {
+      "tags": []
+    },
+    "nn2-e2e": {
+      "tags": []
+    },
+    "nn2": {
+      "tags": []
+    },
+    "docu-ui-e2e": {
+      "tags": []
+    },
+    "docu-ui": {
+      "tags": []
+    }
+  }
 }

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": []
+  },
+  "include": [
+    "**/*.ts",
+    "../../apps/docu-ui/src/index.ts",
+    "../../apps/nn2/src/index.ts",
+    "../../libs/ui/src/index.ts"
+  ],
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
+}
