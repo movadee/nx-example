@@ -6,7 +6,14 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [RouterModule.forChild([])],
+  imports: [
+    RouterModule.forChild([
+      {
+        path: '',
+        component: AppComponent
+      }
+    ])
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
