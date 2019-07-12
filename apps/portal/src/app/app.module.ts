@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         },
         {
           path: 'docu-ui',
-          loadChildren: '@bmo/docu-ui#AppModule'
+          loadChildren: '@bmo/docu-ui#DucuUiModulePortal'
         },
         {
           path: 'nn2',
