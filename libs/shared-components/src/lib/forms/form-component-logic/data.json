@@ -1,0 +1,57 @@
+{
+  "form": {
+    "masthead": {
+      "type": "mast-head",
+      "value": {
+        "title": "Proof of Concept",
+        "subTitle": "Semantic Programming",
+        "imgPath": ""
+      }
+    },
+    "actionBar": {
+      "type": "action-bar-component",
+      "value": {
+        "submit": true,
+        "previous": false,
+        "cancel": true
+      }
+    }
+  },
+
+
+  "fields": [
+    {
+      "id": "fullName",
+      "type": "form-full-name-input",
+      "value": {
+        "lable": "Full Name",
+        "placeholder": "Jane Doe"
+      }
+    }
+  ],
+  "data": {
+    "fullName": {
+      "firstName": "",
+      "lastName": ""
+    }
+  },
+  "validation": {
+    "field": "fullName.firstName",
+    "rules": [
+      {
+        "type": "required",
+        "message": "This field is required",
+        "arguments": true
+      },
+      {
+        "type": "max",
+        "message": "You've exceeed maximum amount of letters",
+        "arguments": "50"
+      }
+    ]
+  }
+}
+
+
+
+

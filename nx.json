@@ -28,6 +28,9 @@
     },
     "docu-ui": {
       "tags": []
+    },
+    "shared-components": {
+      "tags": []
     }
   }
 }

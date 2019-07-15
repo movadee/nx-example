@@ -378,6 +378,40 @@
           }
         }
       }
+    },
+    "shared-components": {
+      "projectType": "library",
+      "root": "libs/shared-components",
+      "sourceRoot": "libs/shared-components/src",
+      "prefix": "bmo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared-components/tsconfig.lib.json",
+              "libs/shared-components/tsconfig.spec.json"
+            ],
+            "styles": [
+              "libs/shared-components/src/lib/forms/form-component-logic/form.component.scss"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared-components/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared-components/jest.config.js",
+            "tsConfig": "libs/shared-components/tsconfig.spec.json",
+            "setupFile": "libs/shared-components/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

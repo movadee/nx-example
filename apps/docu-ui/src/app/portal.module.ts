@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import { SharedComponentsModule } from '@bmo/shared-components';
 
 @NgModule({
   declarations: [AppComponent],
@@ -10,7 +11,10 @@ import { RouterModule } from '@angular/router';
         path: '',
         component: AppComponent
       }
-    ])
+    ]),
+    // RouterModule.forChild([]),
+
+    SharedComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
