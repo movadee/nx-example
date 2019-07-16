@@ -36,8 +36,13 @@ import { initialState } from './+state/comments.reducer';
 @NgModule({
   imports: [
     CommonModule,
+    NxModule.forRoot(),
     StoreModule.forFeature('comments', commentsReducer, { initialState }),
     EffectsModule.forFeature([CommentsEffects])
+  ],
+  providers: [
+    CommentsEffects,
+    CommentsFacade
   ]
 })
 export class SharedStoreModule {}

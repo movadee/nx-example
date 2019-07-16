@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 
 import { CommentsPartialState } from './comments.reducer';
 import { commentsQuery } from './comments.selectors';
-import { LoadComments } from './comments.actions';
+import { LoadComments, AddComment } from './comments.actions';
 
 @Injectable()
 export class CommentsFacade {
@@ -15,6 +15,10 @@ export class CommentsFacade {
   );
 
   constructor(private store: Store<CommentsPartialState>) {}
+
+  addComment(comment: string) {
+    this.store.dispatch(new AddComment(comment));
+  }
 
   loadAll() {
     this.store.dispatch(new LoadComments());

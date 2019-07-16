@@ -5,6 +5,13 @@ import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedStoreModule } from '@bmo/shared-store';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { storeFreeze } from 'ngrx-store-freeze';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { environment } from '../environments/environment.prod';
 
 @NgModule({
   imports: [
@@ -31,7 +38,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         }
       ],
       { initialNavigation: 'enabled' }
-    )
+    ),
+    StoreModule.forRoot({}, { metaReducers: !environment.production ? [storeFreeze] : [] }),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    SharedStoreModule
   ],
   declarations: [AppComponent, HeaderComponent],
   bootstrap: [AppComponent]

@@ -51,7 +51,12 @@ import {
     FormItemComponent,
     FormTemplateBaseComponent,
     FormTextInputComponent,
-    FormCheckboxComponent
+    FormCheckboxComponent,
+
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatInputModule
   ],
   entryComponents: [
     FormComponent,
