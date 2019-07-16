@@ -19,7 +19,8 @@
       "@bmo/docu-ui": ["apps/docu-ui/src/index.ts"],
       "@bmo/nn2": ["apps/nn2/src/index.ts"],
       "@bmo/ui": ["libs/ui/src/index.ts"],
-      "@bmo/shared-components": ["libs/shared-components/src/index.ts"]
+      "@bmo/shared-components": ["libs/shared-components/src/index.ts"],
+      "@bmo/shared-store": ["libs/shared-store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
