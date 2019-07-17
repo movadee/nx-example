@@ -1,20 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import { SharedStoreModule } from '@bmo/shared-store';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CommonModule,
+    SharedStoreModule,
     RouterModule.forChild([
       {
         path: '',
         component: AppComponent
       }
-    ])
+    ]),
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

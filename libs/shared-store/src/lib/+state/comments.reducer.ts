@@ -44,6 +44,17 @@ export function commentsReducer(
       };
       break;
     }
+
+    case CommentsActionTypes.AddComment: {
+      const { list } = state;
+      list.push(action.payload);
+      state = {
+        ...state,
+        list,
+        loaded: true
+      };
+      break;
+    }
   }
   return state;
 }

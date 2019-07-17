@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'bmo-ui',
   template: `
     UI works!
+    <bmo-add-comment></bmo-add-comment>
   `,
   styles: []
 })

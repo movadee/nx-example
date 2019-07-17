@@ -13,10 +13,8 @@ import { SharedComponentsModule } from '@bmo/shared-components';
       }
     ]),
     // RouterModule.forChild([]),
-
-    SharedComponentsModule
+    SharedComponentsModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class DucuUiModulePortal {}
