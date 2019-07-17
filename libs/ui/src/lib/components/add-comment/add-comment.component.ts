@@ -25,6 +25,7 @@ export class AddCommentComponent implements OnInit {
     if (!comment)
       return;
     this.comments.addComment(comment);
+    this.form.setValue({ comment: '' });
   }
 
 }
