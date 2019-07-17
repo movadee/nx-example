@@ -41,7 +41,10 @@ import { environment } from '../environments/environment.prod';
     ),
     StoreModule.forRoot({}, { metaReducers: !environment.production ? [storeFreeze] : [] }),
     EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    }),
     SharedStoreModule
   ],
   declarations: [AppComponent, HeaderComponent],
