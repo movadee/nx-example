@@ -1,5 +1,9 @@
+<br /><br /><br />
+
 NN2 app!
 
-<div *ngFor="let comment of comments$ | async">
+<div *ngFor="let comment of (comments$ | async)">
   {{ comment }}
 </div>
+
+<button>Hey!</button>

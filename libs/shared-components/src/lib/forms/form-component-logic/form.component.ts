@@ -88,11 +88,11 @@ export class FormComponent {
         ]
       },
       {
-        id: 'emailCheckbox',
+        id: 'docu-ui-status-complete',
         type: 'form-checkbox',
         componentType: 'formCheckbox',
         value: {
-          label: 'Can we send you emails?',
+          label: 'docu-ui-status-complete',
           placeholder: ''
         },
         data: '',

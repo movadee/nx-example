@@ -40,9 +40,6 @@ import { initialState } from './+state/comments.reducer';
     StoreModule.forFeature('comments', commentsReducer, { initialState }),
     EffectsModule.forFeature([CommentsEffects])
   ],
-  providers: [
-    CommentsEffects,
-    CommentsFacade
-  ]
+  providers: [CommentsEffects, CommentsFacade]
 })
 export class SharedStoreModule {}
