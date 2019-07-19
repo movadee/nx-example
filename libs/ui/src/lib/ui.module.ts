@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SharedStoreModule } from '@bmo/shared-store';
 import { SharedComponentsModule } from '@bmo/shared-components';
 
 import { UiComponent } from './ui.component';
@@ -17,7 +16,6 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
     ]),
     FormsModule,
     ReactiveFormsModule,
-    SharedStoreModule,
     SharedComponentsModule
   ],
   declarations: [UiComponent, AddCommentComponent],

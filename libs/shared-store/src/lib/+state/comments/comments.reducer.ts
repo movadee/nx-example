@@ -47,6 +47,7 @@ export function commentsReducer(
 
     case CommentsActionTypes.AddComment: {
       const { list } = state;
+      console.log(state);
       list.push(action.payload);
       state = {
         ...state,

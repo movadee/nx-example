@@ -6,7 +6,9 @@ import { CommentsPartialState } from './comments.reducer';
 import { commentsQuery } from './comments.selectors';
 import { LoadComments, AddComment } from './comments.actions';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CommentsFacade {
   loaded$ = this.store.pipe(select(commentsQuery.getLoaded));
   allComments$ = this.store.pipe(select(commentsQuery.getAllComments));
