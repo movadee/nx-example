@@ -17,7 +17,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         component: AppComponent
       }
     ]),
-    // RouterModule.forChild([]),
     SharedComponentsModule,
     MatStepperModule
   ],
