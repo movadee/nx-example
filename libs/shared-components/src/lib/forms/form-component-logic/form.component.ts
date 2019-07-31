@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, ViewEncapsulation, Output, EventEmitter, OnDestroy } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -30,9 +30,8 @@ import { Subscription } from 'rxjs';
   //   `
   // ]
 })
-export class FormComponent implements OnDestroy, OnInit {
+export class FormComponent implements OnDestroy {
   heroForm: FormGroup;
-  _value: any;
 
   @Input() formId: any;
   @Input()
@@ -112,9 +111,7 @@ export class FormComponent implements OnDestroy, OnInit {
     ]
   };
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
     this.toFormGroup(this.items);
   }
 
