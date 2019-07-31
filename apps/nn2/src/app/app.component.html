@@ -6,4 +6,4 @@ NN2 app!
   {{ comment }}
 </div>
 
-<button>Hey!</button>
+<button [disabled]="!(statusComplete$ | async)">Hey!</button>

@@ -50,6 +50,6 @@
 Docu-Ui app!
 <br />
 FORM:
-<app-form formId="test"></app-form>
+<app-form formId="test" [value]="formValue$ | async" (valueChanged)="formValueChanged($event)"></app-form>
 
 GLOBAL Store | \ portal docu-ui ... LOCAL Store | Docu-ui

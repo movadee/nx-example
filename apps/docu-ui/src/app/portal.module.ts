@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SharedComponentsModule } from '@bmo/shared-components';
-
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedComponentsModule } from '@bmo/shared-components';
+
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([

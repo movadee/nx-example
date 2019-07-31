@@ -1,10 +1,10 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import {
   FormGroup,
-  FormBuilder,
   FormControl,
   Validators
 } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -30,9 +30,20 @@ import {
   //   `
   // ]
 })
-export class FormComponent {
+export class FormComponent implements OnDestroy, OnInit {
   heroForm: FormGroup;
+  _value: any;
+
   @Input() formId: any;
+  @Input()
+  set value(value: any) {
+    if (!value)
+      return;
+    this.items.fields.forEach(f => f.data = value[f.id]);
+    setTimeout(() => this.toFormGroup(this.items));
+  }
+  @Output() valueChanged = new EventEmitter();
+  subscription: Subscription;
   // public items = require('./data_2.json');
   public items = {
     fields: [
@@ -101,7 +112,9 @@ export class FormComponent {
     ]
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor() { }
+
+  ngOnInit() {
     this.toFormGroup(this.items);
   }
 
@@ -119,5 +132,11 @@ export class FormComponent {
     });
 
     this.heroForm = new FormGroup(group);
+    this.subscription = this.heroForm.valueChanges.subscribe(value => this.valueChanged.emit(value));
+  }
+
+  ngOnDestroy() {
+    if (this.subscription)
+      this.subscription.unsubscribe();
   }
 }
