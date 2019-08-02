@@ -6,9 +6,7 @@ export enum DocuUiActionTypes {
 
 export class UpdateDocuUiForm implements Action {
   readonly type = DocuUiActionTypes.UpdateDocuUiForm;
-  constructor(public payload: object) {
-    console.log(payload);
-  }
+  constructor(public payload: object) {}
 }
 
 export type DocuUiAction = UpdateDocuUiForm;
