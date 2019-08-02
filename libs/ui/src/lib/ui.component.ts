@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     UI works!
     <bmo-add-comment></bmo-add-comment>
+    <bmo-street-map></bmo-street-map>
   `,
   styles: []
 })
