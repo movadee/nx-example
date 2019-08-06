@@ -4,6 +4,8 @@ import { FormComponent } from './forms/form-component-logic/form.component';
 import { SharedComponent } from './shared-components.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClickOutsideModule } from 'ng-click-outside';
+
 import { FormItemComponent } from './forms/form-component-logic/form-item.component';
 import { FormTemplateBaseComponent } from './forms/form-component-logic/form-template-base.component';
 import { FormTextInputComponent } from './forms/form-text-input.component';
@@ -12,11 +14,16 @@ import { FormCheckboxComponent } from './forms/form-checkbox.component';
 // material design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  MatAutocompleteModule,
   MatButtonModule,
   MatCheckboxModule,
   MatCardModule,
-  MatInputModule
+  MatInputModule,
+  MatRippleModule
 } from '@angular/material';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from '@environment';
+import { StreetMapComponent } from './components/street-map/street-map.component';
 
 @NgModule({
   imports: [
@@ -25,7 +32,13 @@ import {
     //   { path: '', pathMatch: 'full', component: SharedComponent }
     // ]),
     ReactiveFormsModule,
-
+    AgmCoreModule.forRoot({
+      apiKey: environment.google_map_api.KEY,
+      libraries: [
+        'map',
+        'places'
+      ]
+    }),
     // material design modules
     // BrowserAnimationsModule,
     MatButtonModule,
@@ -42,9 +55,11 @@ import {
     FormItemComponent,
     FormTemplateBaseComponent,
     FormTextInputComponent,
-    FormCheckboxComponent
+    FormCheckboxComponent,
+    StreetMapComponent
   ],
   exports: [
+    StreetMapComponent,
     // FormComponent,
     // SharedComponent, // components
     FormComponent,
@@ -53,10 +68,15 @@ import {
     FormTextInputComponent,
     FormCheckboxComponent,
 
+    MatAutocompleteModule,
     MatButtonModule,
     MatCheckboxModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatRippleModule,
+
+    ClickOutsideModule,
+    AgmCoreModule
   ],
   entryComponents: [
     FormComponent,

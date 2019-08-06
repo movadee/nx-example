@@ -7,9 +7,8 @@ import { MapsAPILoader } from '@agm/core';
   styleUrls: ['./street-map.component.scss']
 })
 export class StreetMapComponent implements OnInit {
-
-  @Input() latitude: number = 42.345573;
-  @Input() longitude: number = -71.098326;
+  @Input() latitude: number = 43.6490208;
+  @Input() longitude: number = -79.49495059999998;
   @Input() zoom: number = 1;
   @Input() heading: number = 20;
   @Input() pitch: number = 0;
