@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnChanges, ElementRef } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 
 @Component({
@@ -7,37 +7,75 @@ import { MapsAPILoader } from '@agm/core';
   styleUrls: ['./street-map.component.scss']
 })
 export class StreetMapComponent implements OnInit {
-  @Input() latitude: number = 43.6490208;
+  _latitude: number = 43.6490208;
+  _location: any;
+
+  @Input()
+  set latitude(value: number) {
+    this._latitude = value;
+  }
+
+  get latitude() {
+    return this._latitude;
+  }
+
+  @Input()
+  set location(value: any) {
+    this._location = value;
+    if (this.streetInstance)
+      this.setPosition();
+    else
+      setTimeout(() => this.setPosition(), 300);
+  };
+
+  get location() {
+    return this._location;
+  }
+
   @Input() longitude: number = -79.49495059999998;
-  @Input() zoom: number = 1;
+  @Input() zoom: number = 14;
   @Input() heading: number = 20;
   @Input() pitch: number = 0;
   @Input() scrollwheel: boolean = true;
-  @Input() width = '600px';
-  @Input() height = '400px';
+  @Input() width = '500px';
+  @Input() height = '300px';
 
   @ViewChild('streetview', { static: true })
-  streetView: any;
+  streetView: ElementRef;
+
+  @ViewChild('streetmap', { static: true })
+  streetMap: ElementRef;
+
+  mapInstance: any;
+  streetInstance: any;
 
   constructor(
     private _mapsApi: MapsAPILoader
   ) { }
 
   ngOnInit() {
+    const center = {lat: 42.345573, lng: -71.098326};
     this._mapsApi.load().then(() => {
-      const center = { lng: this.longitude, lat: this.latitude };
-      new this.google.maps.StreetViewPanorama(
-        this.streetView.nativeElement, {
-          position: center,
-          pov: { heading: this.heading, pitch: this.pitch },
-          scrollwheel: this.scrollwheel
-        }
-      );
+      this.mapInstance = new (window as any).google.maps.Map(this.streetMap.nativeElement, {
+        center,
+        zoom: this.zoom
+      });
+      this.streetInstance = new (window as any).google.maps.StreetViewPanorama(this.streetView.nativeElement, {
+        zoom: 0
+      });
+      this.mapInstance.setStreetView(this.streetInstance);
     });
   }
 
-  get google() {
-    return (window as any).google;
+  setPosition() {
+    this.mapInstance.setCenter(this.location);
+    this.streetInstance.setPosition(this.location);
+    setTimeout(() => {
+      const heading = (window as any).google.maps.geometry.spherical.computeHeading(this.streetInstance.getLocation().latLng, this.location);
+      this.streetInstance.setPov({
+        heading,
+        pitch: this.pitch
+      })
+    }, 300);
   }
-
 }

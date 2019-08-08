@@ -24,6 +24,7 @@ import {
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '@environment';
 import { StreetMapComponent } from './components/street-map/street-map.component';
+import { GoogleMapComponent } from './components/google-map/google-map.component';
 
 @NgModule({
   imports: [
@@ -56,10 +57,12 @@ import { StreetMapComponent } from './components/street-map/street-map.component
     FormTemplateBaseComponent,
     FormTextInputComponent,
     FormCheckboxComponent,
-    StreetMapComponent
+    StreetMapComponent,
+    GoogleMapComponent
   ],
   exports: [
     StreetMapComponent,
+    GoogleMapComponent,
     // FormComponent,
     // SharedComponent, // components
     FormComponent,

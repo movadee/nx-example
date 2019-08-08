@@ -10,12 +10,14 @@ import { SharedStoreModule } from '@bmo/shared-store';
 import { AppComponent } from './app.component';
 import { CanadaPostAutocompleteComponent } from './components/canada-post-autocomplete/canada-post-autocomplete.component';
 import { GooglePlaceAutocompleteComponent } from './components/google-place-autocomplete/google-place-autocomplete.component';
+import { SearchAddressViewComponent } from './components/search-address-view/search-address-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CanadaPostAutocompleteComponent,
-    GooglePlaceAutocompleteComponent
+    GooglePlaceAutocompleteComponent,
+    SearchAddressViewComponent
   ],
   imports: [
     CommonModule,

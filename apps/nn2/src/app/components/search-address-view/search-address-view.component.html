@@ -1,0 +1,16 @@
+<div class="map-view">
+  <div>
+    <h3>Canada Post</h3>
+    <bmo-canada-post-autocomplete (onSelect)="canadaPostSelected($event)"></bmo-canada-post-autocomplete>
+  </div>
+
+  <div>
+    <h3>Google Place</h3>
+    <bmo-google-place-autocomplete (onSelect)="googlePlaceSelected($event)"></bmo-google-place-autocomplete>
+  </div>
+</div>
+
+<div class="map-view">
+  <!-- <bmo-google-map [longitude]="longitude" [latitude]="latitude"></bmo-google-map> -->
+  <bmo-street-map [location]="location"></bmo-street-map>
+</div>

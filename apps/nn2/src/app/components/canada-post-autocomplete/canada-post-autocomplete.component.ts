@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -15,14 +15,16 @@ export class CanadaPostAutocompleteComponent implements OnInit, OnDestroy {
   searchInput: FormControl;
   items: ICanadaPostApiResponseItem[] = [];
   subscriptions: Subscription[] = [];
-  geocoderService: any;
   selected: ICanadaPostApiResponseItem;
 
+  @Output()
+  onSelect = new EventEmitter();
+
   showPanel: boolean = false;
+  doSearch: boolean = true;
 
   constructor(
     private canadaPostApi: CanadaPostApiService,
-    private mapsLoader: MapsAPILoader
   ) { }
 
   ngOnInit() {
@@ -33,10 +35,6 @@ export class CanadaPostAutocompleteComponent implements OnInit, OnDestroy {
         debounceTime(250)
       ).subscribe(value => this.search(value))
     );
-
-    this.mapsLoader.load().then(() => {
-      this.geocoderService = new (window as any).google.maps.Geocoder();
-    });
   }
 
   ngOnDestroy() {
@@ -44,6 +42,10 @@ export class CanadaPostAutocompleteComponent implements OnInit, OnDestroy {
   }
 
   search(value: string, LastId: string = '') {
+    if (!this.doSearch) {
+      this.doSearch = true;
+      return;
+    }
     if (!value) {
       this.items = [];
       return;
@@ -55,18 +57,6 @@ export class CanadaPostAutocompleteComponent implements OnInit, OnDestroy {
         (res: ICanadaPostApiResponse) => {
           this.items = res.Items;
           this.show();
-            // this.items.forEach((item, index) => {
-            //   if (item.Next !== 'Retrieve')
-            //     this.search(value, item.Id, index);
-            //   this.geocoderService.geocode({
-            //     address: item.Text
-            //   }, (result, status) => {
-            //     result.forEach(r => {
-            //       console.log(r.geometry.location.lat(), r.geometry.location.lng());
-            //     })
-
-            //   })
-            // });
         },
         (error) => {
           console.error(error);
@@ -80,8 +70,10 @@ export class CanadaPostAutocompleteComponent implements OnInit, OnDestroy {
       this.search(this.searchInput.value, item.Id);
     } else {
       this.selected = item;
-      this.searchInput.setValue(`${item.Text} ${item.Description}`);
+      this.doSearch = false;
       this.hide();
+      this.searchInput.setValue(`${item.Text} ${item.Description}`);
+      this.onSelect.emit(this.selected);
     }
   }
 
