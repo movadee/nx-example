@@ -1,0 +1,13 @@
+<div (clickOutside)="hide()" class="address">
+  <mat-form-field>
+    <input matInput type="text" autocomplete="off" placeholder="Start to type your address" [formControl]="searchInput"
+      (focus)="show()">
+  </mat-form-field>
+  <div class="address-pane" *ngIf="showPanel">
+    <div *ngFor="let item of items" matRipple (click)="selectItem(item)" class="address-pane-item">
+      <div>
+        <span class="address-pane-item-text">{{item.description}}</span>
+      </div>
+    </div>
+  </div>
+</div>

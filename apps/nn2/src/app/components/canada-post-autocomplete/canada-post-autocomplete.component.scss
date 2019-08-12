@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  padding: 4px;
+  width: 400px;
+
+  .address {
+    position: relative;
+
+    &-pane {
+      background: white;
+      box-shadow: -2px 10px 9px 0px #00000052;
+      border-radius: 5px;
+      border: 1px solid #ececec;
+      max-height: 500px;
+      overflow-y: auto;
+      margin-top: -18px;
+      position: absolute;
+      width: 100%;
+      top: 64px;
+      left: 0;
+      z-index: 99;
+
+      &-item {
+        padding: 10px 8px;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: space-between;
+
+        &:hover {
+          background: #ececec;
+        }
+
+        &-description {
+          color: #555;
+          font-style: italic;
+        }
+
+        &-next {
+          color: #793d3d;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}

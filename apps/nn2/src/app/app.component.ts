@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommentsFacade, DocuUiFacade } from '@bmo/shared-store';
 import { Observable } from 'rxjs';
+
+import { CommentsFacade, DocuUiFacade } from '@bmo/shared-store';
 
 @Component({
   selector: 'bmo-root',
@@ -13,7 +14,10 @@ export class AppComponent implements OnInit {
   comments$: Observable<any>;
   statusComplete$: Observable<boolean>;
 
-  constructor(private comments: CommentsFacade, private docuUi: DocuUiFacade) {}
+  constructor(
+    private comments: CommentsFacade,
+    private docuUi: DocuUiFacade
+  ) {}
 
   ngOnInit() {
     this.comments$ = this.comments.allComments$;
