@@ -13,13 +13,15 @@ import { AppComponent } from './app.component';
 import { CanadaPostAutocompleteComponent } from './components/canada-post-autocomplete/canada-post-autocomplete.component';
 import { GooglePlaceAutocompleteComponent } from './components/google-place-autocomplete/google-place-autocomplete.component';
 import { SearchAddressViewComponent } from './components/search-address-view/search-address-view.component';
+import { GoogleSearchBoxComponent } from './components/google-search-box/google-search-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CanadaPostAutocompleteComponent,
     GooglePlaceAutocompleteComponent,
-    SearchAddressViewComponent
+    SearchAddressViewComponent,
+    GoogleSearchBoxComponent
   ],
   imports: [
     CommonModule,

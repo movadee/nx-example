@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   canada_post_api: {
-    KEY: 'GM39-UU96-HF39-HJ39',
+    KEY: 'FY52-DK91-AR46-HU69',
     URL: 'https://ws1.postescanada-canadapost.ca/AddressComplete/Interactive/Find/v2.10/json3.ws'
   },
   google_map_api: {

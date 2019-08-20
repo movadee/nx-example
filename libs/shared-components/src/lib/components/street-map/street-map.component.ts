@@ -8,7 +8,7 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class StreetMapComponent implements OnInit {
   _latitude: number = 43.6490208;
-  _location: any;
+  _location: google.maps.LatLng;
 
   @Input()
   set latitude(value: number) {
@@ -22,6 +22,8 @@ export class StreetMapComponent implements OnInit {
   @Input()
   set location(value: any) {
     this._location = value;
+    if (!value)
+      return;
     if (this.streetInstance)
       this.setPosition();
     else
@@ -46,8 +48,8 @@ export class StreetMapComponent implements OnInit {
   @ViewChild('streetmap', { static: true })
   streetMap: ElementRef;
 
-  mapInstance: any;
-  streetInstance: any;
+  mapInstance: google.maps.Map;
+  streetInstance: google.maps.StreetViewPanorama;
 
   constructor(
     private _mapsApi: MapsAPILoader
@@ -56,11 +58,11 @@ export class StreetMapComponent implements OnInit {
   ngOnInit() {
     const center = {lat: 42.345573, lng: -71.098326};
     this._mapsApi.load().then(() => {
-      this.mapInstance = new (window as any).google.maps.Map(this.streetMap.nativeElement, {
+      this.mapInstance = new google.maps.Map(this.streetMap.nativeElement, {
         center,
         zoom: this.zoom
       });
-      this.streetInstance = new (window as any).google.maps.StreetViewPanorama(this.streetView.nativeElement, {
+      this.streetInstance = new google.maps.StreetViewPanorama(this.streetView.nativeElement, {
         zoom: 0
       });
       this.mapInstance.setStreetView(this.streetInstance);
@@ -71,11 +73,11 @@ export class StreetMapComponent implements OnInit {
     this.mapInstance.setCenter(this.location);
     this.streetInstance.setPosition(this.location);
     setTimeout(() => {
-      const heading = (window as any).google.maps.geometry.spherical.computeHeading(this.streetInstance.getLocation().latLng, this.location);
+      const heading = google.maps.geometry.spherical.computeHeading(this.streetInstance.getLocation().latLng, this.location);
       this.streetInstance.setPov({
         heading,
         pitch: this.pitch
       })
-    }, 300);
+    }, 500);
   }
 }
