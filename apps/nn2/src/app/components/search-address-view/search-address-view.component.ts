@@ -24,7 +24,7 @@ export class SearchAddressViewComponent implements OnInit {
   }
 
   canadaPostSelected(event) {
-    this.searchLocationFromAddress(event.Text);
+    this.searchLocationFromAddress(`${event.Text} ${event.Description}`);
   }
 
   googlePlaceSelected(event) {

@@ -1,0 +1,7 @@
+<bmo-canada-post-autocomplete (onSelect)="canadaPostSelected($event)"></bmo-canada-post-autocomplete>
+<input class="google-search-box" #search placeholder="Search for location" type="text" name="search">
+
+<div class="map-view">
+  <!-- <bmo-google-map [longitude]="longitude" [latitude]="latitude"></bmo-google-map> -->
+  <bmo-street-map [location]="location"></bmo-street-map>
+</div>

@@ -23,7 +23,8 @@
       "@bmo/shared-store": ["libs/shared-store/src/index.ts"],
       "@bmo/shared-services": ["libs/shared-services/src/index.ts"],
       "@environment": ["environments/environment.ts"]
-    }
+    },
+    "types": ["googlemaps"]
   },
   "exclude": ["node_modules", "tmp"]
 }

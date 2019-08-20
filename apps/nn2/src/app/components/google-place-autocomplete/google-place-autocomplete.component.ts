@@ -17,6 +17,7 @@ export class GooglePlaceAutocompleteComponent implements OnInit, OnDestroy {
   placeService: any;
   selected: any;
   showPanel = false;
+  doSearch: boolean = true;
 
   @Output()
   onSelect = new EventEmitter();
@@ -44,6 +45,10 @@ export class GooglePlaceAutocompleteComponent implements OnInit, OnDestroy {
   }
 
   search(value: string) {
+    if (!this.doSearch) {
+      this.doSearch = true;
+      return;
+    }
     if (!value) {
       this.items = [];
       this.hide();
@@ -57,6 +62,7 @@ export class GooglePlaceAutocompleteComponent implements OnInit, OnDestroy {
 
   selectItem(item: any) {
     this.selected = item;
+    this.doSearch = false;
     this.searchInput.setValue(`${item.description}`);
     this.hide();
     this.onSelect.emit(this.selected);
